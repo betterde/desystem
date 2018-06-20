@@ -10,6 +10,10 @@ sidebar: auto
 
 为确保前后端数据通信的安全性，[RECOMMENDED](../common/keyword.md#recommended)使用HTTPS协议进行加密传输
 
+## 无状态
+
+通信的会话状态（Session State）应该全部由客户端负责维护。
+
 ## 域名与版本控制
 
 [RECOMMENDED](../common/keyword.md#recommended)使用API专有域名，并对API进行版本控制：
@@ -21,7 +25,7 @@ https://api.betterde.com/v{n}/
 
 RPC(Remote Procedure Call) 意为`远程过程调用`，它是一种通过网络从远程计算机程序上请求服务，而不需要了解底层网络技术的协议。
 
-### SOPA
+### SOAP
 
 SOAP (Simple Object Access Protocol)，是一个严格定义的信息交换协议，用于在Web Service中把远程调用和返回封装成机器可读的格式化数据。事实上SOAP数据使用XML数据格式，定义了一整套复杂的标签，以描述调用的远程过程、参数、返回值和出错信息等等。而且随着需要的增长，又不得增加协议以支持安全性，这使SOAP变得异常庞大，背离了简单的初衷。
 
