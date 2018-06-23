@@ -12,3 +12,11 @@ features:
 - title: 加速项目推进
   details: 原型和UI阶段参照该标准，在程序实现中将更流畅，有效避免频繁修改原型。
 ---
+
+<style>
+  @media (max-width: 419px) {
+    .home .hero img {
+      width: 100%;
+    }  
+  }
+</style>
