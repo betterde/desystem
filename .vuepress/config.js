@@ -63,11 +63,15 @@ module.exports = {
       ],
       '/components/backend/': [
         '',
+        'caidan',
+        'tree',
+        'city',
         'response',
         'support',
         'permission',
         'supervisor',
-        'jpush'
+        'jpush',
+        'yonghusq'
       ],
       '/components/frontend/': [
         ''
