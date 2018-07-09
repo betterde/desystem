@@ -40,7 +40,7 @@ module.exports = {
         '',
         'status',
         'response',
-        'rap'
+        'security'
       ],
       '/standard/database/': [
         '',
@@ -48,7 +48,8 @@ module.exports = {
         'table',
         'field',
         'indexes',
-        'query'
+        'query',
+        'separation'
       ],
       '/standard/prototype/': [
         '',
@@ -61,7 +62,12 @@ module.exports = {
         'workflow'
       ],
       '/components/backend/': [
-        ''
+        '',
+        'response',
+        'support',
+        'permission',
+        'supervisor',
+        'jpush'
       ],
       '/components/frontend/': [
         ''

@@ -1,5 +1,7 @@
 # 介绍
 
+![Architecture](/spa-architecture.png)
+
 Web从最初其设计者所构思的主要支持静态文档的阶段，逐渐变得越来越动态化。Web应用的交互模式，变得越来越复杂。为了方便前后端对接，降低沟通成本。特制定该规范，请尽可能的按照规范实施。
 
 ## 协议 <Badge text="RECOMMENDED" type="tip" vertical="middle"/>
@@ -98,7 +100,7 @@ DELETE      api/v1/user/profile/{profile}
 https://api.betterde.com/v1/user?age=18&page=10&paginate=15
 ```
 ::: tip 查询参数说明
-在`URL`中`?`及以后的字符串都被称为查询字符串。请尽量采用如下分页参数（[OPTIONAL](../common/keyword.md#optional)）
+在`URL`中`?`及以后的字符串都被称为查询字符串。请尽量采用如下分页参数（[OPTIONAL](../../common/keyword.md#optional)）
 * `page` 用于分页的页码
 * `paginate` 用于定义分页大小
 :::
