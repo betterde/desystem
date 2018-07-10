@@ -1,6 +1,9 @@
 module.exports = {
-  title: 'Design System',
-  description: 'The Minimum Viable Design System',
+  head: [
+    ['link', { rel: 'ico', type: 'image/x-icon', href: '/favicon.ico' }]
+  ],
+  title: '科零组件库平台',
+  description: '技术团队在线组件库、技术文档管理系统',
   serviceWorker: true,
   markdown: {
     lineNumbers: true
@@ -31,8 +34,8 @@ module.exports = {
         ]
       },
       {
-        text: 'Guthub',
-        link: 'https://github.com/betterde'
+        text: '代码库',
+        link: 'https://github.com/trkeling'
       }
     ],
     sidebar: {
