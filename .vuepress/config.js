@@ -74,7 +74,8 @@ module.exports = {
         'permission',
         'supervisor',
         'jpush',
-        'yonghusq'
+        'yonghusq',
+        'jwtauth',
       ],
       '/components/frontend/': [
         ''
