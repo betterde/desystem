@@ -76,6 +76,8 @@ module.exports = {
         'jpush',
         'yonghusq',
         'jwtauth',
+        'sms',
+        'wxApiToken',
       ],
       '/components/frontend/': [
         ''
