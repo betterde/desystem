@@ -44,7 +44,7 @@ class Duan_xin extends Model
 
 ```
 
-### 填充文件
+### 迁移文件
 ```php
 <?php
 
@@ -137,7 +137,6 @@ class DuanXingController extends Controller
             {
                 return failed('请'.Config('app.verify_seconds').'秒后重试');
             }
-            return $liu_data;
             $contentstr 			= "您的验证码是：".$code."。请不要把验证码泄露给其他人。";
             //写入数据库
             $ses->code = $code;
