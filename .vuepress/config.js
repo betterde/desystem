@@ -78,6 +78,7 @@ module.exports = {
         'jwtauth',
         'sms',
         'wxApiToken',
+        'LaravelAdmin'
       ],
       '/components/frontend/': [
         ''
