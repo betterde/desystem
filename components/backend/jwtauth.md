@@ -502,6 +502,14 @@ namespace App\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
+use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Symfony\Component\HttpKernel\Exception\HttpException;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
+use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
+
 
 class Handler extends ExceptionHandler
 {
@@ -527,7 +535,7 @@ class Handler extends ExceptionHandler
     /**
      * Report or log an exception.
      *
-     * @param  \Exception  $exception
+     * @param  \Exception $exception
      * @return void
      */
     public function report(Exception $exception)
@@ -538,22 +546,58 @@ class Handler extends ExceptionHandler
     /**
      * Render an exception into an HTTP response.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \Exception  $exception
+     * @param  \Illuminate\Http\Request $request
+     * @param  \Exception $exception
      * @return \Illuminate\Http\Response
      */
     public function render($request, Exception $exception)
     {
+        // 拦截一般异常并生成响应
+        if ($exception instanceof GeneralException) {
+            return failed($exception->getMessage(), $exception->getCode() ?: 500);
+        }
+
+        // 拦截404异常
+        if ($exception instanceof ModelNotFoundException) {
+            return $this->notFound();
+        }
+
+        // 拦截授权异常
+        if ($exception instanceof AuthorizationException) {
+            return failed('您无权访问', 403);
+        }
+
         // 参数验证错误的异常，我们需要返回 400 的 http code 和一句错误信息
         if ($exception instanceof ValidationException) {
-            return response(['error' => array_first(array_collapse($exception->errors()))], 400);
+            return failed(array_first(array_collapse($exception->errors())), 422);
         }
+
         // 用户认证的异常，我们需要返回 401 的 http code 和错误信息
         if ($exception instanceof UnauthorizedHttpException) {
-            return response($exception->getMessage(), 401);
+            return failed('未提供Token', 401);
+        }
+
+        // 捕获404异常
+        if ($exception instanceof NotFoundHttpException) {
+            return $this->notFound();
         }
 
         return parent::render($request, $exception);
+    }
+
+    /**
+     * 认证失败后抛出异常
+     *
+     * Date: 2018/5/27
+     * @author George
+     * @param \Illuminate\Http\Request $request
+     * @param AuthenticationException $exception
+     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
+     */
+    public function unauthenticated($request, AuthenticationException $exception)
+    {
+        return failed('身份认证失败', 401);
+
     }
 }
 
