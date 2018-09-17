@@ -493,6 +493,22 @@ class RefreshToken extends BaseMiddleware
 
 ```
 
+### 中间件注册
+- `app/Http/Kernel.php`
+```php
+/**
+     * The application's route middleware.
+     *
+     * These middleware may be assigned to groups or used individually.
+     *
+     * @var array
+     */
+    protected $routeMiddleware = [
+        // ...
+        'wechat.oauth' => \Overtrue\LaravelWeChat\Middleware\OAuthAuthenticate::class,
+    ];
+```
+
 ### 更新异常处理的 Handler
 - App\Exceptions
 ```php
