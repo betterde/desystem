@@ -10,7 +10,7 @@
 /**
  * 前端接受Token地址
  */
-'mobile_wx' => 'http://debiw.trc-demo.com/',
+'mobile_wx' => 'http://debiw.trc-demo.com/#/authorize/',
 /**
  * 默认密码
  */
@@ -251,7 +251,7 @@ class WxController extends Controller
             'password' => Config('app.password')
         ]);
 
-        header('location:'.Config('app.mobile_wx').'?token='.$token.'&url='.$url);exit;
+        header('location:'.Config('app.mobile_wx').$token.'/'.$url);exit;
 
     }
 
