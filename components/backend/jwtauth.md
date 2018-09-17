@@ -513,6 +513,7 @@ class RefreshToken extends BaseMiddleware
 - App\Exceptions
 ```php
 <?php
+<?php
 
 namespace App\Exceptions;
 
@@ -575,7 +576,7 @@ class Handler extends ExceptionHandler
 
         // 拦截404异常
         if ($exception instanceof ModelNotFoundException) {
-            return $this->notFound();
+            return failed('身份认证失败', 401);
         }
 
         // 拦截授权异常
@@ -595,25 +596,10 @@ class Handler extends ExceptionHandler
 
         // 捕获404异常
         if ($exception instanceof NotFoundHttpException) {
-            return $this->notFound();
+            return failed('身份认证失败', 401);
         }
 
         return parent::render($request, $exception);
-    }
-
-    /**
-     * 认证失败后抛出异常
-     *
-     * Date: 2018/5/27
-     * @author George
-     * @param \Illuminate\Http\Request $request
-     * @param AuthenticationException $exception
-     * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\Response
-     */
-    public function unauthenticated($request, AuthenticationException $exception)
-    {
-        return failed('身份认证失败', 401);
-
     }
 }
 
