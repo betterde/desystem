@@ -162,7 +162,7 @@ class CreateUsersTable extends Migration
 ```php
 composer require betterde/response
 composer require overtrue/laravel-wechat
-composer require tymon/jwt-auth
+composer require tymon/jwt-auth dev-develop
 ```
 
 ## 代码
