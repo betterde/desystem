@@ -78,7 +78,8 @@ module.exports = {
         'jwtauth',
         'sms',
         'wxApiToken',
-        'LaravelAdmin'
+        'LaravelAdmin',
+        'changYon'
       ],
       '/components/frontend/': [
         ''
